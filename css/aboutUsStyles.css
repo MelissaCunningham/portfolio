@@ -1,0 +1,10 @@
+/* CSS Styles for Chapter 3 */
+
+dl, dt, dl { margin:0;padding:0; }
+
+dt			{ color:#268bd2;font-weight:bold;margin-bottom:1em;cursor:pointer;line-height:16px;background: url(../images/arrow-sprite.png) 0 0 no-repeat;padding-left:18px; }
+dt:hover	{ color: #2aa198;background-position:0 -16px; }
+dt.open		{ background-position: 0 -32px; }
+dt.open:hover	{ background-position: 0 -48px;}
+dd			{ margin-left: 2em; }
+dd *:first-child	{ margin-top:0;padding-top:0;}
