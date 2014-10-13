@@ -1,0 +1,62 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #333;
+}
+
+#divWrapper {
+	background-color: #efe;
+	width: 40em;
+	border: solid black;
+	border-radius: 0 0 20px 20px;
+	border-width: 0 1px 1px 1px;
+	margin: 0 auto;
+	padding: 2em 1em;
+}
+
+h2 {
+	font-style: italic;
+	font-size: 1.3em;
+	color: #666;
+	margin-top: 0px;
+}
+
+input {
+	margin-right: 0.3em;
+}
+
+h3, p {
+	margin: 0.5em 0;
+}
+
+div#divErrors {
+	font-size: 110%;
+	color: white;
+	background: #f00;
+	margin-bottom: 0.5em;
+}
+
+#divPaymentInfo {
+	margin: 10px 0 20px 0;
+	padding: 10px 0 10px 0;
+	border: solid black;
+	border-width: 1px 0;
+}
+
+#divCreditCardInfo {
+	font-size: .8em;
+	visibility: hidden;
+	margin-left: 1em;
+	display: inline;
+}
+
+#divOrder {
+	background: white;
+	min-height: 10em;
+	width: 25em;
+	border: 1px solid black;
+	margin: 0.5em 0;
+	padding: 10px;
+}

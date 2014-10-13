@@ -1,0 +1,173 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support import wait
+from selenium.webdriver.common import action_chains
+from selenium.webdriver.support.ui import WebDriverWait
+import unittest, time, re
+import base_page_object
+import random
+import sys
+
+
+def doStuff(user,password,school):
+    print 'Launch browser'
+    driver=webdriver.Firefox()
+    driver.implicitly_wait(30)
+    base_url="http://xxx.xxx.xx.xx/" #URL to VM site. URL made anonymous for github.
+    verificationErrors=[]   #Space to collect errors
+    driver.get(base_url + "/")
+
+    #base_page_object.BasePage.wait_until(,"print 'yikes'",)
+    #assertEqual("Skills Pointer", driver.title)
+
+#################################################
+# Log In
+#################################################
+
+    driver.find_element_by_id("st_sc_id").clear()
+    driver.find_element_by_id("st_sc_id").send_keys(school)
+    driver.find_element_by_id("st_student_id").clear()
+    driver.find_element_by_id("st_student_id").send_keys(user)
+    driver.find_element_by_id("tb_pwd").clear()
+    driver.find_element_by_id("tb_pwd").send_keys(password)
+    driver.find_element_by_id("bt_cklogin").click()
+#    assertEqual("Skills Pointer", driver.title)
+
+##################################################
+# Navigate to Diagnostic Assessment Page
+##################################################
+
+#    driver.find_element_by_id("banner")    
+    driver.switch_to_frame("banner") 
+    driver.find_element_by_id("h5").click()
+
+#    driver.get(base_url + "/aspx/test_select.aspx") #loads only the lower frame of the page (top frame is student_top.aspx)
+    time.sleep(1) 
+    driver.switch_to_default_content() 
+    driver.switch_to_frame("main") 
+    
+#############################################################
+# Select Test Type
+#############################################################
+    subjects=["Mathematics","Language Arts","Reading","Science"]
+    subjSelection=random.choice(subjects)
+
+    Select(driver.find_element_by_id("subject_ddl")).select_by_visible_text(subjSelection)
+    
+    mathStrands=["Algebra, Patterns, and Relationships","Data, Statistics, and Probability","Geometry and Measurement","Number Sense, Computation, and Operations","Problem Solving"]
+    langStrands=["Language Expressions","Language Mechanics","Listening & Speaking","Spelling","Study Skills","Writing"]
+    readingStrands=["Literature","Literature: Analysis","Literature: Poetry","Reading Analysis and Evaluation","Reading Comprehension","Vocabulary"]
+    scienceStrands=["Earth and Space Science","Life Science","Physical Science","Science Process Skills"]
+    
+    if subjSelection=="Mathematics":
+        driver.find_element_by_css_selector("option[value=\"Mathematics\"]").click()
+        strandSelection=random.choice(mathStrands)
+    if subjSelection=="Language Arts":
+        driver.find_element_by_css_selector("option[value=\"Language Arts\"]").click()
+        strandSelection=random.choice(langStrands)
+    if subjSelection=="Reading":
+        driver.find_element_by_css_selector("option[value=\"Reading\"]").click()
+        strandSelection=random.choice(readingStrands)
+    if subjSelection=="Science":
+        driver.find_element_by_css_selector("option[value=\"Science\"]").click()   
+        strandSelection=random.choice(scienceStrands)
+    
+    print subjSelection, strandSelection        
+        
+    Select(driver.find_element_by_id("skill_ddl")).select_by_visible_text(strandSelection)
+    driver.find_element_by_id("ImageButton2").click()
+    
+    time.sleep(1)
+
+##########################################################
+# Take Test
+##########################################################
+    while True:
+        try:  #Does the page have test answers on it?
+            driver.find_element_by_id('rb1')
+        except:
+            print 'No test questions on page.  Test is over'
+            break
+            
+        #Find number of answer choices on page
+        answers=['rb1', '(//input[@id=\'rb1\'])[2]', '(//input[@id=\'rb1\'])[3]'] #answer array with A-C in it
+        choicesCounter=5          
+        try:
+            driver.find_element_by_xpath('(//input[@id=\'rb1\'])[4]')
+            answers.append('(//input[@id=\'rb1\'])[4]') #add D answer to answer array
+        except:
+            choicesCounter=choicesCounter-1
+            print 'No answer D on page'
+        try:
+            driver.find_element_by_xpath('(//input[@id=\'rb1\'])[5]')
+            answers.append('(//input[@id=\'rb1\'])[5]') #add E answer to answer array
+        except:
+            choicesCounter=choicesCounter-1
+            print 'No answer E on page'  
+        print answers
+          
+        selection=random.choice(answers) #Choose random answer
+        print 'Randomly selected answer is:', selection
+        
+        time.sleep(1)
+        try:
+            driver.find_element_by_xpath(selection).click() #Enter random answer B-E
+            time.sleep(1)
+            print 'User clicked B-E answer'
+            driver.find_element_by_id("Bt_next").click()  #Click next question
+            print 'User clicked Next button'
+        except:
+            print 'No answer B-E found' #Before quitting test input loop, see if random answer is "A"
+        try:
+            driver.find_element_by_id(selection).click() #Enter random answer A
+            time.sleep(1)
+            print 'User clicked A answer'
+            driver.find_element_by_id("Bt_next").click()  #Click next question
+            print 'User clicked Next button'                
+        except:
+            print 'No answer A found'
+            print 'User is finished with current page'
+            
+    
+#
+#    match=re.match(r'(.*)input(.*)',selection,flags=0)  #Does string have "input" in it
+#    if match:   #If string has "input"
+
+
+
+    #assertEqual("test results selected", driver.title) VERIFY CORRECT PAGE?
+
+    try:
+        driver.find_element_by_id("Bt_goback").click()  #Click Go back to main button
+        print 'User is going back to main Skills Pointer page'
+        time.sleep(1)
+    except:
+        print 'Couldn\'t find Go Back button'
+#self.assertEqual("Skills Pointer", driver.title) VERIFY CORRECT PAGE?
+
+#########################################################
+# Quit Driver
+#########################################################
+    driver.quit()
+    print 'Driver has quit'
+#    assertEqual([], verificationErrors)
+
+    
+
+def data (password,counter=0):
+#    users=['zoe1','wanda1','valerie1','tucker1','shawn1','rufus1','quinn1','paul1']
+#    schools=['11964','11964','11964','11964','11964','11968','11968','11968']
+    users=['zoe1']
+    schools=['11964']
+    for x in users:
+        doStuff(x, password, schools[counter])
+        counter+=1
+        
+
+password='password1'
+data (password)
+
+
+

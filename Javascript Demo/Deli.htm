@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+File Name: Deli.htm
+Programmer: Melissa Cunningham
+-->
+
+<head>
+<meta charset="utf-8">
+<title>Nick's Deli Sandwiches</title>
+<link href="css/global.css" rel="stylesheet">
+<script src="scripts/main.js"></script>
+</head>
+
+<body>
+
+<div id="divWrapper">
+
+	<form name="frmMain">
+
+	<h1 id="h1Title">Deli</h1>
+
+	<h3>Sandwich</h3>
+	<label><input type="radio" name="radSandwich" value="Breast of Chicken">Breast of Chicken</label><br>
+	<label><input type="radio" name="radSandwich" value="Leg of Lamb">Leg of Lamb</label><br>
+	<label><input type="radio" name="radSandwich" value="Loin of Ham">Loin of Ham</label><br>
+	<label><input type="radio" name="radSandwich" value="ReelMeat&reg;">ReelMeat&reg;</label><br>
+	<br>
+
+	<h3>Size</h3>
+	<label><input type="radio" name="radSize" value="Small"  title="$4.99">Small (6 inch)</label>&nbsp;&nbsp;
+	<label><input type="radio" name="radSize" value="Medium" title="$5.99">Medium (9 inch)</label>&nbsp;&nbsp;
+	<label><input type="radio" name="radSize" value="Large" title="$6.99">Large (12 inch)</label>
+	<br><br>
+
+	<h3>Extras ($<span id="spanExtrasPrice"></span> each)</h3>
+	<label><input type="checkbox" name="chkExtras" value="Double Meat">Double Meat</label><br>
+	<label><input type="checkbox" name="chkExtras" value="Extra Cheese">Extra Cheese</label><br>
+	<label><input type="checkbox" name="chkExtras" value="Banana Peppers">Banana Peppers</label><br>
+	<br><br>
+
+	Total: <input type="text" id="txtTotal" size="5"> <input type="button" id="btnCalculateTotal" value="Calculate Total">
+	<br><br>
+
+	<div id="divErrors"></div>
+
+
+	<div id="divPaymentInfo">
+
+		<strong>Customer Name:</strong> <input type="text" id="txtName">
+		<br><br>
+
+		<strong>Payment Type:</strong>
+		<select id="selPayment">
+			<option value="Cash" selected="selected">Cash</option>
+			<option value="Check">Check</option>
+			<option value="Credit Card">Credit Card</option>
+		</select>
+
+		<div id="divCreditCardInfo">
+			Card Number: <input type="text" id="txtCreditCardNbr" size="20">&nbsp;&nbsp;
+
+			Month: <input type="text" id="txtMonth" size="2">&nbsp;&nbsp;Year:
+			<select id="selYear">
+				<option value="" selected="selected"></option>
+				<option value="2012">2012</option>
+				<option value="2013">2013</option>
+				<option value="2014">2014</option>
+				<option value="2015">2015</option>
+				<option value="2016">2016</option>
+				<option value="2010">2017</option>
+				<option value="2011">2018</option>
+			</select>
+
+		</div><!-- end divCreditCardInfo -->
+
+	</div><!-- end divPaymentInfo -->
+
+
+	<input type="button" id="btnProcessOrder" value="Process Order">
+
+	<div id="divOrder"></div>
+
+	<input type="reset" value="Reset">
+
+	</form>
+
+</div> <!-- end divWrapper -->
+
+</body>
+</html>

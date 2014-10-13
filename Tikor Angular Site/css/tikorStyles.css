@@ -1,0 +1,262 @@
+
+/* reset browser styles */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+
+	margin: 0;
+
+	padding: 0;
+
+	border: 0;
+
+	font-size: 100%;
+
+	vertical-align: baseline;
+
+}
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+
+	display: block;
+
+}
+
+
+body {
+
+	line-height: 1.2;
+}
+
+
+ol {
+ 
+	padding-left: 1.4em;
+
+	list-style: decimal;
+
+}
+
+
+ul {
+
+	padding-left: 1.4em;
+
+	list-style: square;
+
+}
+
+table {
+
+	border-collapse: collapse;
+
+	border-spacing: 0;
+
+} 
+
+/* end reset browser styles */
+
+
+body {
+	background-color: #FFF;
+	background-image: url('../images/tikorbg5.jpg');
+	max-width: 945px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 15px;
+	font-family: Arial, sans-serif;
+}
+
+.wrapper {
+//	background-color: white;
+//	background-image: url('../images/tikorbg5.jpg');
+	min-height: 800px;
+	padding-bottom: 45px;
+}
+
+.main {
+	background: rgba(255,255,255,1);
+	margin-left: 20px;
+	width: 630px;
+	padding: 10px;
+	border-radius: 5px;
+	line-height: 20px;
+}
+
+.main p {
+	margin-bottom: 10px;
+}
+
+.main h1 {
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 20px;
+	background: #FFF;
+}
+
+.main h3 {
+	font-size: 16px;
+	margin-bottom: 10px;
+	font-style: normal;
+}
+
+.main li {
+	list-style-type: disc;
+}
+
+.main li:last-of-type {
+	margin-bottom: 10px;
+}
+
+.contact li {
+	list-style-type: none;
+}
+
+.contact a {
+	color: #000;
+}
+
+/* header styles */
+
+.header {
+	color: #162E8A;
+//	background-color: #FFF;
+//	background-image: url('../images/tikorbg5.jpg');
+//	background-repeat: repeat-x;
+//	background-size: 50% 100%;
+	border-bottom: #000 solid 4px;
+	padding-left: 170px;
+	font-family: 'Times New Roman', serif;
+	font-style: italic;
+	text-shadow:1px 1px 1px #207FB5;
+	font-size: 25px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.header h1 {
+	font-size: 60px;
+	padding-bottom: 20px;
+	margin-left: 0;
+	margin-top: 0;
+	background-color: rgba(0,0,0,0);
+}
+
+.header h3 {
+	margin-left: 150px;
+}
+.header .headphoto-left {
+	background-image: url('../images/tikorbg1.jpg');
+	background-repeat: no-repeat;
+	background-size: 960px 124px;
+	min-height: 124px;
+	min-width: 160px;
+	margin-left: -170px;
+	margin-top: -10px;
+}
+
+.header .headphoto-right {
+	float: right;
+	background-image: url('../images/tikorbg2.jpg');
+	background-repeat: no-repeat;
+	background-size: 160px 124px;
+	min-height: 124px;
+	min-width: 160px;
+	margin-top: -104px;
+	margin-left: -1000px;	
+}
+
+/* navigation styles */
+
+nav {
+//	padding-top: 10px;
+//	padding-bottom: 20px;
+	font-family: 'Merriweather Sans', sans-serif;
+}
+
+nav li {
+	border-left: #FFF 3px solid;
+	border-bottom: #FFF 3px solid; 
+	background-color: #162E8A;
+	display: inline-block;
+	padding: 15px;
+	margin-right: -4.5px;
+	font-weight: bold;
+//	box-shadow: 4px 4px 4px rgba(142,133,147,.9);
+}
+
+nav li:first-of-type {
+	border-radius: 0 0 0 5px;
+}
+
+nav li:last-of-type {
+	border-right: #FFF 3px solid;
+	border-radius: 0 0 5px 0;
+}
+
+nav a:link, nav a:visited {
+	color: #FFF;
+}
+
+nav a:hover {
+	color: #000;
+}
+
+nav a:active {
+	color: #FFF;
+}
+
+nav a {
+	text-decoration: none;
+	padding: 10px;
+}
+
+/* footer styles */
+
+footer {
+	color: #FFF;
+	background-color: #162E8A;
+	padding-left: 27px;
+}
+
+footer li {
+	padding-right: 35px;
+	font-size: 12px;
+	display: inline-block;
+}
+
+footer a:link {
+	color: #FFF;
+	text-decoration: none;
+}
+
+footer a:visited {
+	color: #FFF;
+	text-decoration: none;
+}
+
+footer a:hover {
+	color: #207FB5;
+	text-decoration: none;
+}
+
+footer a:active {
+	color: #207FB5;
+	text-decoration: none;
+}
+
+footer .name {
+	color: #FFF;
+	font-size: 15px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+footer .legal {
+	font-size: 9px;
+	font-style: italic;
+}
