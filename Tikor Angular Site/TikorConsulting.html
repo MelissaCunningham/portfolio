@@ -1,10 +1,12 @@
 <!DOCTYPE html> 
-<html>
+<html ng-app="tikor">
 
 <head> 
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>Tikor Consulting</title>
 <link href="css/tikorStyles.css" rel="stylesheet">
+<script src="lib/angular.min.js" type="text/javascript"></script>
+<script src="scripts/tikor.js" type="text/javascript"></script>
 </head> 
 <body> 
 
@@ -15,18 +17,27 @@
 <!--	<div class="headphoto-right"></div>  -->
 </div>
 
-<div class="wrapper">
+<div ng-controller="MainController as mainpage" class="wrapper">
 
 <nav>
 	<ul>
-		<li><a href="main.html">Home</a></li>
-		<li><a href="services.html">About Us</a></li>
-		<li><a href="portfolio.html">Services</a></li>
-		<li><a href="background.html">Contact</a></li>
+		<li ng-class="{ activetab:mainpage.isSelected(1) }">
+			<a href ng-click="mainpage.selectTab(1)">Home</a>
+		</li>
+		<li ng-class="{ activetab:mainpage.isSelected(2) }">
+			<a href ng-click="mainpage.selectTab(2)">About Us</a>
+		</li>
+		<li ng-class="{ activetab:mainpage.isSelected(3) }">
+			<a href ng-click="mainpage.selectTab(3)">Services</a>
+		</li>
+		<li ng-class="{ activetab:mainpage.isSelected(4) }">
+			<a href ng-click="mainpage.selectTab(4)">Contact</a>
+		</li>
 	</ul>
+	
 </nav>
 <div class="main">
-<div class="tab1">
+<div ng-show="mainpage.isSelected(1)">
 	<p>Trust your critical business systems and database to the experts at Tikor Consulting. Our primary lines of business are:</p>
 	<ul>
 		<li>Oracle Database Support, Maintenance, and Upgrades</li>
@@ -44,7 +55,7 @@
 	</ul>	
 </div>
 
-<div class="tab2">
+<div ng-show="mainpage.isSelected(2)">
 	<h1>Our Company</h1>
 	<p>We started in 2003 providing low cost remote database support under contract to smaller companies in the Northwest. Our primary focus has been, and remains, Oracle E-business Suite. Most of our clients are referred to us from previous clients or other consultanting firms that we have worked with.</p>
     <p>Since our primary market has been smallere business our role, since they are often light on technical resources, has been to proivde a wide array of technical support to our clietns. This may include Storage Area Network, (SAN), Operating System Support (Unix (HP, Solaris, Linux)/ Windows), custom programming and IT impacts to businiess processing.</p>
@@ -58,7 +69,7 @@
 	<p>We also try to fit the solution to the client. For example, with smaller clients we often minimize customization. While it can be great to get the 'perfect' solution the on-going support requirements for a tailored solution may outweigh the ongoing support requirements.</p>
 </div>
 	
-<div class="tab3">
+<div ng-show="mainpage.isSelected(3)">
 	<h1>Our Services</h1>
 
 	<h3>Hosting</h3>
@@ -77,7 +88,7 @@
 	<p>We often perform programming to automate processing on the database management side. In addition we can write applications that leverage our extensive knowledge of the Oracle E-Business Suite to provide you the deatils data or processing that you need.</p>
 </div>
  
-<div class="tab4">
+<div ng-show="mainpage.isSelected(4)">
 	<h1>Contact Us</h1>
 	
 	<p>To find out more about the services at Tikor Consulting, and to receive an estimate, please contact us today!</p>
@@ -104,7 +115,6 @@
 		<li class="legal">Copyright &#0169; 2012 Tikor Consulting. All Rights Reserved.</li>
 	</ul>
 </footer>
-
 
 </body>
 </html>

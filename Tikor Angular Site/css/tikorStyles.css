@@ -210,9 +210,17 @@ nav a:active {
 	color: #FFF;
 }
 
+nav li:hover {
+	background-color: #207FB5;
+}
+
 nav a {
 	text-decoration: none;
 	padding: 10px;
+}
+
+.activetab {
+	background-color: #207FB5;
 }
 
 /* footer styles */
